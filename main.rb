@@ -1,52 +1,34 @@
 require 'date'
 require_relative 'item'
+require_relative 'app'
 
 def options
   print "
-    1. Create Item
-    2. Archieve item
-    3. Quit
+    1. List all Musics
+    2. List all genres (e.g 'Comedy', 'Thriller')
+    3. List all authors (e.g. 'Stephen King')
+    4. List of games
+    5. List all labels (eg. 'Gift', 'New')
+    6. Create Item
+    7. Add a book
+    8. Add a music album
+    9. Add a game
+    10. Archieve item
+    11. Quit
     "
-end
-
-def create_item(items)
-  puts 'Please enter Genre: '
-  genre = gets.chomp
-  puts 'Please enter source: '
-  source = gets.chomp
-  puts 'Please enter label'
-  label = gets.chomp
-  puts 'Please enter publish date (YYYY-MM-DD): '
-  publish_date = Date.parse(gets.chomp)
-  item = Item.new(genre, source, label, publish_date, false)
-  items << item
-  puts "Item created ID: #{item.id}"
-end
-items = []
-
-def archive_item(items)
-  puts 'archieve item (ID): '
-  item_id = gets.chomp.to_i
-
-  item_archive = items.find { |item| item.id == item_id }
-  if item_archive.nil?
-    puts 'item not found'
-  else
-    item_archive.move_to_archive
-    puts "Item with ID #{item_archive.id} archived."
-  end
 end
 
 loop do
   options
+  app = App.new
   num = gets.chomp.to_i
 
   case num
-  when 1
-    create_item(items)
-  when 2
-    archive_item(items)
-  when 3
+  when 6
+    app.create_item(items)
+  when 10
+    app.archive_item(items)
+  when 11
     puts 'Exiting'
     break
   else
