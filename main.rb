@@ -1,5 +1,3 @@
-require 'date'
-require_relative 'item'
 require_relative 'app'
 
 def options

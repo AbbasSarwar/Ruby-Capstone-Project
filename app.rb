@@ -1,6 +1,11 @@
+require_relative 'app'
+require 'date'
+
 class App
     def initialize
         @items = []
+        @albums = []
+        @genres = []
     end
 
     def create_item(items)
@@ -15,9 +20,9 @@ class App
         item = Item.new(genre, source, label, publish_date, false)
         @items << item
         puts "Item created ID: #{item.id}"
-      end
-      
-      def archive_item(items)
+    end
+
+    def archive_item(items)
         puts 'archieve item (ID): '
         item_id = gets.chomp.to_i
       
@@ -28,4 +33,16 @@ class App
           item_archive.move_to_archive
           puts "Item with ID #{item_archive.id} archived."
         end
-      end
+    end
+
+    def list_all_music_albums(albums)
+        albums.each {|album| puts "#{album.id} #{album.name} #{album.genre}"}
+    end
+
+    def list_all_genres(items)
+        items.each {|item| "#{genre.name}"}
+    end
+
+    def add_music_album
+        puts ""
+end
