@@ -1,48 +1,55 @@
-require_relative 'app'
+require_relative 'music_album'
+require_relative 'genre'
+require_relative 'preserve'
+
 require 'date'
 
 class App
-    def initialize
-        @items = []
-        @albums = []
-        @genres = []
-    end
+  def initialize
+    @preserve = Preserve.new
+    @preserve.load_music_albums
+    @preserve.load_genres
+  end
 
-    def create_item(items)
-        puts 'Please enter Genre: '
-        genre = gets.chomp
-        puts 'Please enter source: '
-        source = gets.chomp
-        puts 'Please enter label'
-        label = gets.chomp
-        puts 'Please enter publish date (YYYY-MM-DD): '
-        publish_date = Date.parse(gets.chomp)
-        item = Item.new(genre, source, label, publish_date, false)
-        @items << item
-        puts "Item created ID: #{item.id}"
-    end
+  def list_music_albums
+    return puts 'No music albums found' if @preserve.music_albums.empty?
 
-    def archive_item(items)
-        puts 'archieve item (ID): '
-        item_id = gets.chomp.to_i
-      
-        item_archive = @items.find { |item| item.id == item_id }
-        if item_archive.nil?
-          puts 'item not found'
-        else
-          item_archive.move_to_archive
-          puts "Item with ID #{item_archive.id} archived."
-        end
+    @preserve.music_albums.each_with_index do |music_album, index|
+      puts "
+      #{index + 1})  On spotify: #{music_album.on_spotify}
+          Publish date: #{music_album.publish_date}
+      "
     end
+  end
 
-    def list_all_music_albums(albums)
-        albums.each {|album| puts "#{album.id} #{album.name} #{album.genre}"}
+  def list_genres
+    return puts 'No genres found' if @preserve.genres.empty?
+
+    @preserve.genres.each_with_index do |genre, index|
+      puts "#{index + 1}) Name: #{genre.name}"
     end
+  end
 
-    def list_all_genres(items)
-        items.each {|item| "#{genre.name}"}
-    end
+  def add_music_album
+    puts 'Available on spotify? [Y / N]'
+    on_spotify = gets.chomp.downcase == 'y'
+    puts 'Enter publish date in format (YYYY-MM-DD)'
+    publish_date = Date.parse(gets.chomp)
+    new_music_album = MusicAlbum.new(nil, publish_date, on_spotify)
+    puts "Enter genre details\n"
+    new_genre = add_genre
+    new_music_album.add_genre(new_genre)
+    @preserve.music_albums.push(new_music_album)
+    @preserve.save_music_album(new_music_album)
+    puts 'Music album created successfully'
+  end
 
-    def add_music_album
-        puts ""
+  def add_genre
+    puts 'Enter name'
+    name = gets.chomp
+    new_genre = Genre.new(nil, name)
+    @preserve.genres.push(new_genre)
+    @preserve.save_genre(new_genre)
+    new_genre
+  end
 end

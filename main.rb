@@ -7,12 +7,11 @@ def options
     3. List all authors (e.g. 'Stephen King')
     4. List of games
     5. List all labels (eg. 'Gift', 'New')
-    6. Create Item
-    7. Add a book
-    8. Add a music album
-    9. Add a game
-    10. Archieve item
-    11. Quit
+    6. Add a book
+    7. Add a music album
+    8. Add a game
+    9. Archieve item
+    10. Quit
     "
 end
 
@@ -22,12 +21,14 @@ loop do
   num = gets.chomp.to_i
 
   case num
-  when 6
-    app.create_item(items)
+  when 1
+    app.list_music_albums
+  when 2
+    app.list_genres
+  when 7
+    app.add_music_album
   when 10
-    app.archive_item(items)
-  when 11
-    puts 'Exiting'
+    puts 'Thank you for using the app!'
     break
   else
     puts 'Invalid Option'
