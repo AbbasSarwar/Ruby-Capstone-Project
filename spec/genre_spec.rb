@@ -1,6 +1,6 @@
 require_relative '../genre'
 require_relative '../item'
-require 'Date'
+require 'date'
 
 describe Genre do
   it 'it should return name' do
