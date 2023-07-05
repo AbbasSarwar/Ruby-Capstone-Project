@@ -1,14 +1,9 @@
 class Item
-  attr_accessor :genre, :source, :label, :publish_date
-  attr_reader :id, :archived
+  attr_reader :id, :genre, :author, :label, :publish_date
 
-  def initialize(genre, source, label, publish_date, archived)
-    @id = Random.rand(1..1000)
-    @genre = genre
-    @source = source
-    @label = label
+  def initialize(id, publish_date)
+    @id = id || Random.rand(1..1000)
     @publish_date = publish_date
-    @archived = archived
   end
 
   private
@@ -24,5 +19,12 @@ class Item
     return unless @can_be_archived
 
     true
+  end
+
+  def add_genre(genre)
+    return unless genre
+
+    @genre = genre
+    genre.items.push(self) unless genre.items.include?(self)
   end
 end
