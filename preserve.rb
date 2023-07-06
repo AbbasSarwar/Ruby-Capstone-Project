@@ -106,8 +106,6 @@ class Preserve
   end
 end
 
-
-
 p = Preserve.new
 p.load_music_albums
 p.music_albums.each do |music_album|
