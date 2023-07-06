@@ -1,5 +1,5 @@
 require_relative '../label'
-require_relative '../item.rb'
+require_relative '../item'
 require 'date'
 
 
