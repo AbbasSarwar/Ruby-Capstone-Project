@@ -93,7 +93,7 @@ class Preserve
       File.write('./data/books.json', JSON.pretty_generate([new_book]))
     end
   end
-  
+
   def save_label(label)
     new_label = { id: label.id, title: label.title, color: label.color }
     if File.exist?('./data/labels.json')
@@ -116,7 +116,7 @@ p.music_albums.each do |music_album|
   puts "On Spotify: #{music_album.on_spotify}"
   puts "Genre: #{music_album.genre.name}" if music_album.genre
   puts '-------------------------'
-end 
+end
 
 
 def load_books

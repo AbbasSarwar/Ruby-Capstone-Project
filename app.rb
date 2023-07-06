@@ -74,22 +74,21 @@ class App
   end
 
   def add_book
-  puts 'Enter publisher'
-  publisher = gets.chomp
-  puts 'Enter publish date in format (YYYY-MM-DD)'
-  publish_date = Date.parse(gets.chomp)
-  puts 'Enter the cover state'
-  cover_state = gets.chomp
-  new_book = Book.new(nil, publish_date, publisher, cover_state)
-  puts "Enter label details\n"
-  new_label = add_label
-  new_book.add_label(new_label)
-  @preserve.books.push(new_book)
-  @preserve.save_book(new_book)
-  puts 'Book created successfully'
-end
+    puts 'Enter publisher'
+    publisher = gets.chomp
+    puts 'Enter publish date in format (YYYY-MM-DD)'
+    publish_date = Date.parse(gets.chomp)
+    puts 'Enter the cover state'
+    cover_state = gets.chomp
+    new_book = Book.new(nil, publish_date, publisher, cover_state)
+    puts "Enter label details\n"
+    new_label = add_label
+    new_book.add_label(new_label)
+    @preserve.books.push(new_book)
+    @preserve.save_book(new_book)
+    puts 'Book created successfully'
+  end
 
-  
   def add_label
     puts 'Enter title'
     title = gets.chomp
@@ -101,6 +100,3 @@ end
     new_label
   end
 end
-
-
-
