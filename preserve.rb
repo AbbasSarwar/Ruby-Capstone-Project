@@ -116,7 +116,6 @@ p.music_albums.each do |music_album|
   puts '-------------------------'
 end
 
-
 def load_books
   return unless File.exist?('./data/books.json')
 
