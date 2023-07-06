@@ -2,7 +2,6 @@ require_relative '../label'
 require_relative '../item'
 require 'date'
 
-
 describe Label do
   context 'With valid arguments' do
     it 'should return title of the label' do
