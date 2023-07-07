@@ -101,9 +101,9 @@ In order to run this project you need:
 
 👤 **Author3**
 
-- GitHub: [@Tayyab-Kamboh](https://github.com/Tayyab-Kamboh)
-
-<!-- FUTURE FEATURES -->
+- Github: [@TayyabKM](https://github.com/Tayyab-Kamboh)
+- Twitter: [@TayyabI83126361](https://twitter.com/TayyabI83126361)
+- Linkedin: [@tayyab-irfan-01b72b1aa](https://www.linkedin.com/in/tayyab-irfan-01b72b1aa/)
 
 ## 🔭 Future Features <a name="future-features"></a>
 
