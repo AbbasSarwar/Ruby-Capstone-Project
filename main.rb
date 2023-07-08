@@ -11,8 +11,7 @@ def options
     7. Add a book
     8. Add a music album
     9. Add a game
-    10. Archive item
-    11. Quit
+    10. Quit
     "
 end
 
@@ -27,6 +26,10 @@ loop do
     app.list_music_albums
   when 2
     app.list_genres
+  when 3
+    app.list_authors
+  when 4
+    app.list_games
   when 5
     app.list_books
   when 6
@@ -35,7 +38,9 @@ loop do
     app.add_book
   when 8
     app.add_music_album
-  when 11
+  when 9
+    app.add_game
+  when 10
     puts 'Thank you for using the app!'
     break
   else
