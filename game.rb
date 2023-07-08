@@ -13,6 +13,6 @@ class Game < Item
 
   def can_be_archived?
     parent_method = super
-    parent_method && @last_played_at < (Date.today - 365 * 2)
+    parent_method && @last_played_at.year < (Date.today.year - 2)
   end
 end

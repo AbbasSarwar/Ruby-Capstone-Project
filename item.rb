@@ -32,4 +32,5 @@ class Item
     @label = label
     label.items.push(self) unless label.items.include?(self)
   end
+
 end
