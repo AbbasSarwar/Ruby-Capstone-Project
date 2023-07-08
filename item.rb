@@ -16,7 +16,7 @@ class Item
   public
 
   def move_to_archive
-    return unless @can_be_archived
+    return unless can_be_archived?
 
     true
   end
@@ -33,4 +33,8 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 
+  def add_author(author)
+    @author = author
+    author.items.push(self) unless author.items.include?(self)
+  end
 end
