@@ -1,22 +1,42 @@
 require_relative '../game'
+require_relative '../item'
+require 'date'
 
-describe Game do
-  context 'With valid arguments' do
-    it 'should return if true or false for multiplayer' do
-      game = Game.new(nil, '1994-09-08', true, '1998-07-07')
-      expect(game.multiplayer).to eq(true)
+RSpec.describe Game do
+  let(:publish_date) { DateTime.parse('2021-01-01').to_time }
+  let(:last_played_at) { DateTime.parse('2022-06-01').to_time }
+  let(:multiplayer) { 2 }
+  let(:author) { %w[Blessing EKiugbo] }
+
+  subject { described_class.new('Game', publish_date, last_played_at, multiplayer, author: author) }
+
+  describe '#initialize' do
+    it 'sets the name' do
+      expect(subject.name).to eq('Game')
     end
 
-    it 'should return date as valid argument for last_played_at' do
-      game = Game.new(nil, '1994-09-08', true, '1998-07-07')
-      expect(game.last_played_at).to eq('1998-07-07')
+    it 'sets the publish_date' do
+      expect(subject.publish_date).to eq(publish_date)
+    end
+
+    it 'sets the last_played_at attribute' do
+      expect(subject.last_played_at).to eq(last_played_at)
+    end
+
+    it 'sets the multiplayer attribute' do
+      expect(subject.multiplayer).to eq(multiplayer)
+    end
+
+    it 'sets the author' do
+      expect(subject.author).to eq(author)
     end
   end
 
-  context 'can_be_archived?' do
-    it 'should return if game can be archived' do
-      game = Game.new(nil, '1994-09-08', true, '1998-07-07')
-      expect(game.can_be_archived?).to eq(true)
+  describe '#add_author' do
+    it 'adds a new author to the author list' do
+      subject.add_author('John Doe')
+      expect(subject.author).to include('John Doe')
     end
   end
 end
+

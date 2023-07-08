@@ -1,24 +1,17 @@
 require_relative '../author'
-require_relative '../item'
-require 'date'
+require_relative '../game'
 
-describe Author do
-  context 'With valid arguments' do
-    it 'should return the correct first name' do
-      author = Author.new(nil, 'Tega', 'Uche')
-      expect(author.first_name).to eq 'Tega'
-    end
+RSpec.describe Author do
+  describe '#initialize' do
+    it 'sets the attributes correctly' do
+      first_name = 'Blessing'
+      last_name = 'Ekiugbo'
 
-    it 'should return the correct last name' do
-      author = Author.new(nil, 'Tega', 'Uche')
-      expect(author.last_name).to eq 'Uche'
-    end
+      author = Author.new(first_name, last_name)
 
-    it 'should add item to the instance' do
-      author = Author.new(nil, 'Tega', 'Uche')
-      item = Item.new(nil, '1999-08-07')
-      author.add_item(item)
-      expect(author.items.length).to eq 1
+      expect(author.first_name).to eq(first_name)
+      expect(author.last_name).to eq(last_name)
+      expect(author.items).to be_empty
     end
   end
 end

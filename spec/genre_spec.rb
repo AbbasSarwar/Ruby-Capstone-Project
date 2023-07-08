@@ -1,17 +1,22 @@
+require_relative '../music_album'
 require_relative '../genre'
-require_relative '../item'
-require 'date'
 
 describe Genre do
-  it 'it should return name' do
-    genre = Genre.new(nil, 'CSW')
-    expect(genre.name).to eq('CSW')
-  end
+  let(:genre_name) { 'Rock' }
+  let(:genre) { Genre.new(genre_name) }
 
-  it 'it should instance' do
-    genre = Genre.new(nil, 'PRO')
-    item = Item.new(nil, Date.parse('2022-02-02'))
-    genre.add_item(item)
-    expect(genre.items.length).to eq 1
+  describe '#initialize' do
+    it 'sets the name correctly' do
+      expect(genre.name).to eq(genre_name)
+    end
+
+    it 'initializes the items array' do
+      expect(genre.items).to be_an(Array)
+      expect(genre.items).to be_empty
+    end
+
+    it 'generates a random id' do
+      expect(genre.instance_variable_get(:@id)).to be_an(Integer)
+    end
   end
 end
