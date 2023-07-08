@@ -1,0 +1,20 @@
+[
+  {
+    "title": "alcamist",
+    "publisher": "nasa",
+    "publish_date": "2010-5-8",
+    "cover_state": "GOOD"
+  },
+  {
+    "title": "simple",
+    "publisher": "nasa",
+    "publish_date": "2010-9-9",
+    "cover_state": "GOOD"
+  },
+  {
+    "title": "99 Percent mine",
+    "publisher": "Sally Throne",
+    "publish_date": "2021-12-11",
+    "cover_state": "GOOD"
+  }
+]
