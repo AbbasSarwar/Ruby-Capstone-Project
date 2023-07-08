@@ -32,7 +32,6 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 
- 
   def add_author(author)
     return unless author
 

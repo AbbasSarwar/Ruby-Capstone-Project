@@ -58,7 +58,8 @@ class App
     return puts 'No games found' if @preserve.games.empty?
 
     @preserve.games.each_with_index do |game, index|
-      puts "#{index + 1} Publish Date: #{game.publish_date}, Multiplayer: #{game.multiplayer}, Last played at: #{game.last_played_at}"
+      puts "#{index + 1} Publish Date: #{game.publish_date},
+      Multiplayer: #{game.multiplayer}, Last played at: #{game.last_played_at}"
     end
   end
 
@@ -108,7 +109,6 @@ class App
     @preserve.save_book(new_book)
     puts 'Book created successfully'
   end
-
 
   def add_label
     puts 'Enter title'

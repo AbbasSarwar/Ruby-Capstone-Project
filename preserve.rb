@@ -63,7 +63,6 @@ class Preserve
     end
   end
 
-
   def load_games
     return unless File.exist?('./data/games.json')
 
@@ -121,7 +120,6 @@ class Preserve
     end
   end
 
-
   def save_label(label)
     new_label = { id: label.id, title: label.title, color: label.color }
     if File.exist?('./data/labels.json')
@@ -134,7 +132,8 @@ class Preserve
   end
 
   def save_game(game)
-    new_game = { id: game.id, publish_date: game.publish_date, multiplayer: game.multiplayer, last_played_at: game.last_played_at, author_id: game.author.id }
+    new_game = { id: game.id, publish_date: game.publish_date, multiplayer: game.multiplayer,
+                 last_played_at: game.last_played_at, author_id: game.author.id }
     if File.exist?('./data/games.json')
       games_loaded = JSON.parse(File.read('./data/games.json'))
       games_loaded << new_game
