@@ -1,5 +1,6 @@
-require_relative '../music_album'
-require 'date'
+require 'rspec'
+require_relative '../classes/item'
+require_relative '../classes/music_album'
 
 RSpec.describe MusicAlbum do
   describe '#initialize' do
