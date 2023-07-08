@@ -1,5 +1,5 @@
 require 'rspec'
-require 'date' 
+require 'date'
 require_relative '../item'
 
 RSpec.describe Item do
