@@ -9,8 +9,7 @@ class Item
   private
 
   def can_be_archived?
-    diff_years = Date.today.year - @publish_date.year
-    diff_years >= 10
+    Time.now.year - Date.parse(@publish_date).year > 10
   end
 
   public
