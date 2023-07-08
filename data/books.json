@@ -12,5 +12,12 @@
     "publisher": "Tayyab Kamboh",
     "cover_state": "Good",
     "label_id": 493
+  },
+  {
+    "id": 999,
+    "publish_date": "2000-09-08",
+    "publisher": "Sonybooks",
+    "cover_state": "good",
+    "label_id": 647
   }
 ]
