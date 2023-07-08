@@ -51,4 +51,3 @@ class Game < Item
     raise ArgumentError, 'Invalid date format. Expected format: YYYY-MM-DD.'
   end
 end
-

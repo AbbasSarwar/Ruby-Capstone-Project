@@ -1,6 +1,6 @@
-require_relative './app/book_app'
-require_relative './app/music_album_app'
-require_relative './app/game_app'
+require_relative 'app/book_app'
+require_relative 'app/music_album_app'
+require_relative 'app/game_app'
 require_relative 'display_menu'
 
 class Main
