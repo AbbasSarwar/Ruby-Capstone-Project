@@ -2,6 +2,8 @@ require_relative 'book'
 require_relative 'label'
 require_relative 'music_album'
 require_relative 'genre'
+require_relative 'game'
+require_relative 'author'
 require_relative 'preserve'
 
 require 'date'
@@ -13,6 +15,8 @@ class App
     @preserve.load_genres
     @preserve.load_labels
     @preserve.load_books
+    @preserve.load_games
+    @preserve.load_authors
   end
 
   def list_books
@@ -47,6 +51,22 @@ class App
 
     @preserve.genres.each_with_index do |genre, index|
       puts "#{index + 1}) Name: #{genre.name}"
+    end
+  end
+
+  def list_games
+    return puts 'No games found' if @preserve.games.empty?
+
+    @preserve.games.each_with_index do |game, index|
+      puts "#{index + 1} Publish Date: #{game.publish_date}, Multiplayer: #{game.multiplayer}, Last played at: #{game.last_played_at}"
+    end
+  end
+
+  def list_authors
+    return puts 'No authors found' if @preserve.authors.empty?
+
+    @preserve.authors.each_with_index do |author, index|
+      puts "#{index + 1}) First name: #{author.first_name}, Last name: #{author.last_name} "
     end
   end
 
@@ -89,6 +109,7 @@ class App
     puts 'Book created successfully'
   end
 
+
   def add_label
     puts 'Enter title'
     title = gets.chomp
@@ -98,5 +119,32 @@ class App
     @preserve.labels.push(new_label)
     @preserve.save_label(new_label)
     new_label
+  end
+
+  def add_game
+    puts 'Is it multiplayer? [Y / N]:'
+    multiplayer = gets.chomp.downcase == 'y'
+    puts 'Enter publish date in format (YYYY-MM-DD):'
+    publish_date = Date.parse(gets.chomp)
+    puts 'Enter last_played_at in format (YYYY-MM-DD):'
+    last_played_at = gets.chomp
+    new_game = Game.new(nil, publish_date, multiplayer, last_played_at)
+    puts "Enter game author details:\n"
+    new_author = add_author
+    new_game.add_author(new_author)
+    @preserve.games.push(new_game)
+    @preserve.save_game(new_game)
+    puts 'Game created successfully'
+  end
+
+  def add_author
+    puts 'Enter first name:'
+    first_name = gets.chomp
+    puts 'Enter last name:'
+    last_name = gets.chomp
+    new_author = Author.new(nil, first_name, last_name)
+    @preserve.authors.push(new_author)
+    @preserve.save_author(new_author)
+    new_author
   end
 end

@@ -32,8 +32,12 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 
+ 
   def add_author(author)
+    return unless author
+
     @author = author
+    author.items ||= []
     author.items.push(self) unless author.items.include?(self)
   end
 end
