@@ -10,8 +10,6 @@ class Game < Item
     @last_played_at = last_played_at
   end
 
-  # private
-
   def can_be_archived?
     is_expired = Time.now.year - Date.parse(@last_played_at).year > 2
     super && is_expired
