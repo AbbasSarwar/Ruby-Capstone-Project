@@ -1,0 +1,17 @@
+def display_menu
+  puts '----------------------'
+  puts 'Welcome to the Catalog of my things'
+  puts '----------------------'
+  puts 'Select an option:'
+  puts '1. List all Books'
+  puts '2. List all Labels'
+  puts '3. List all Music Albums'
+  puts '4. List all Genres'
+  puts '5. List all Games'
+  puts '6. List all Authors'
+  puts '7. Add a new Book'
+  puts '8. Add a new Music Album'
+  puts '9. Add a new Game'
+  puts '10. Quit'
+  print 'Choice: '
+end
